@@ -44,4 +44,6 @@ public interface BookService {
     Map<Category,List<Book>> listByCategory();
 
     void update(Book book);
+
+    List<Book> findAll(Book book);
 }

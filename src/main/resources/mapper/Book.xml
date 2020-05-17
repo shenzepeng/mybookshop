@@ -71,4 +71,7 @@
     <select id="getUserId" resultType="_int">
         select uid from book where id = #{id}
     </select>
+    <select id="findBooks" resultMap="bookResultMap" parameterType="com.daniel.pojo.Book">
+        SELECT * FROM book
+    </select>
 </mapper>

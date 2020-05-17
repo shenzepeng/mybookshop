@@ -1,6 +1,7 @@
 package com.daniel.dao;
 
 import com.daniel.pojo.Book;
+import com.hazelcast.util.collection.BiInt2ObjectMap;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -56,4 +57,6 @@ public interface BookDAO {
      * @return 相应的List
      */
     List<Book> getListByUserId(@Param("uid") int uid, @Param("bookType") int bookType);
+
+    List<Book> findBooks(Book book);
 }

@@ -8,29 +8,32 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/book.css">
 </head>
 <body>
+<%
+    int number=(int)(Math.random()*100);
+%>
 <!-- 导航 -->
 <header>
     <nav class="navbar">
         <div class="nav-info">
             <a href="#" class="username">chiemin</a>
-            <a href="/myBookshelf.do" class="bookshelf">||&nbsp;&nbsp;&nbsp;我的书架</a>
+            <a href="${pageContext.request.contextPath }/myBookshelf.do" class="bookshelf">||&nbsp;&nbsp;&nbsp;我的书架</a>
             <a href="#" class="logout">[ 退 出 ]</a>
         </div> <!-- nav-info -->
-        <form action="searchBook.do" method="post">
-            <div class="nav-search">
-                <a href="home.do"><img class="logo" src="<%=request.getContextPath()%>/img/logo2.png"></a>
-                <div class="search-form">
-                    <input id="search-input" name="name" type="search" class="searchIn" placeholder="搜图书...">
-                    <a href="#" class="search-logo">| &nbsp;<img src="<%=request.getContextPath()%>/img/search.png"></a>
-                    <button type="submit" id="search-button" class="searchBtn">搜索</button>
-                </div>
-            </div><!--  nav-search -->
-        </form>
+<%--        <form action="searchBook.do" method="post">--%>
+<%--            <div class="nav-search">--%>
+<%--                <a href="home.do"><img class="logo" src="https://kxg-neituibao-jianli.oss-cn-beijing.aliyuncs.com/data/1589675404534.jpg"></a>--%>
+<%--                <div class="search-form">--%>
+<%--                    <input id="search-input" name="name" type="search" class="searchIn" placeholder="搜图书...">--%>
+<%--                    <a href="#" class="search-logo">| &nbsp;<img src="<%=request.getContextPath()%>/img/search.png"></a>--%>
+<%--                    <button type="submit" id="search-button" class="searchBtn">搜索</button>--%>
+<%--                </div>--%>
+<%--            </div><!--  nav-search -->--%>
+<%--        </form>--%>
         <ul class="menu">
-            <li><a href="/home.do">首页</a></li>
-            <li><a href="/goBookStore.do">书籍良品</a></li>
-            <li><a href="/goAskBookStore.do">求书区</a></li>
-            <li><a href="#">服务区</a></li>
+            <li><a href="${pageContext.request.contextPath }/home.do">首页</a></li>
+            <li><a href="${pageContext.request.contextPath }/goBookStore.do">书籍良品</a></li>
+            <li><a href="${pageContext.request.contextPath }/goAskBookStore.do">求书区</a></li>
+<%--            <li><a href="#">服务区</a></li>--%>
         </ul>
     </nav>
     <div class="askBook-pic"></div>
@@ -49,8 +52,11 @@
                     <h5 class="book-name">${book.getName()}</h5>
                     <span class="book-detail">${book.getDescription()}</span>
                 </a>
-                <span class="book-price">￥${book.getPrice()}
-						<a href="#" class="book-buy">立即下单</a>
+                <span class="book-price">起拍价格￥${book.getPrice()}
+                    </br>
+                     当前价格￥${book.getPrice()+number}
+                </span>
+						<a href="#" class="book-buy" id="add" onclick="add()">加入竞拍</a>
                 </span>
             </li>
             </c:forEach>
@@ -65,7 +71,7 @@
 		</span>
 </div><!-- container end-->
 <footer>
-    <a href="#">©2018-2019 二手书交易</a>
+    <a href="#">©2019-2020 二手书交易</a>
     <a href="#">意见反馈&nbsp;&nbsp;&nbsp;联系我们&nbsp;&nbsp;&nbsp;隐私权声明&nbsp;&nbsp;&nbsp;使用条款</a>
 </footer>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.2.js"></script>
@@ -91,7 +97,13 @@
             //加粗当前点击的li
             $(this).css("font-weight","600").siblings("li").css("font-weight","500");
         });
+        $("#add").on("click",function () {
+            alert("已经加入竞拍，请等待后续结果");
+        });
     })
+    function add() {
+        alert("已经加入竞拍，请等待后续结果");
+    }
 </script>
 </body>
 </html>

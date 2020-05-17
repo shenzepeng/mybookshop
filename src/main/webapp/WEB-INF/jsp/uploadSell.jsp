@@ -14,14 +14,14 @@
     <div class="nav-menu">
         <ul class="menu">
             <li><a class="active" href="/home.do">首页</a></li>
-            <li><a href="/goBookStore.do">书籍良品</a></li>
-            <li><a href="/goAskBookStore.do">求书区</a></li>
-            <li><a href="#">服务区</a></li>
+            <li><a href="${pageContext.request.contextPath }/goBookStore.do">书籍良品</a></li>
+            <li><a href="${pageContext.request.contextPath }/goAskBookStore.do">求书区</a></li>
+<%--            <li><a href="#">服务区</a></li>--%>
         </ul>
     </div><!-- nav-menu -->
 
     <div class="nav-search">
-        <form action="searchBook.do" method="post">
+        <form action="${pageContext.request.contextPath }/searchBook.do" method="post">
             <input type="search" class="searchIn" name="name" placeholder="搜图书...">
             <button class="search-logo"><img src="<%=request.getContextPath()%>/img/search2.png"></button>
         </form>
@@ -29,7 +29,7 @@
 
     <div class="nav-info">
         <a href="#" class="username">${user.getName()}</a>
-        <a href="/myBookshelf.do" class="bookshelf">||&nbsp;&nbsp;&nbsp;我的书架</a>
+        <a href="${pageContext.request.contextPath }/myBookshelf.do" class="bookshelf">||&nbsp;&nbsp;&nbsp;我的书架</a>
         <a href="#" class="logout">[ 退 出 ]</a>
     </div> <!-- nav-info-end -->
 </nav>
@@ -103,7 +103,7 @@
 </dialog>
 
 <footer>
-    <a href="#">©2018-2019 二手书交易</a>
+    <a href="#">©2019-2020 二手书交易</a>
     <a href="#">意见反馈&nbsp;&nbsp;&nbsp;联系我们&nbsp;&nbsp;&nbsp;隐私权声明&nbsp;&nbsp;&nbsp;使用条款</a>
 </footer>
 </body>
@@ -124,7 +124,7 @@
 
         $("#bookForm").ajaxSubmit({
             type:"POST",
-            url:"/books/",
+            url:"${pageContext.request.contextPath }/books/",
             async:false,
             dataType:"json",
             success:function(result){

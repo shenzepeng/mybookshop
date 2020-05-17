@@ -5,13 +5,13 @@
 
 <html>
 <head>
-    <title>校园二手书交易平台</title>
+    <title>二手书拍卖平台</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css">
 </head>
 <body>
     <div id="login-container">
-        <h2>校园二手书交易平台</h2>
+        <h2>二手书拍卖平台</h2>
         <br />
         <form>
             <input type="text" id="studentid" class="userName" placeholder="学号"><br/>
@@ -26,25 +26,28 @@
 
     $(function() {
         $('#login-button').click(function (event) {
-            $('#errorInfo').html("");
+          //  $('#errorInfo').html("");
             var studentid_ = $('#studentid').val();
             var password_ = $('#password').val();
+
             if (studentid_.length == 0 || password_.length == 0) {
                 $('#errorInfo').html("学号或密码不能为空！");
                 return false;
             }
 
             var user_ = {"studentid": studentid_, "password": password_};
+            alert("开始进行验证");
             var jsonData = JSON.stringify(user_);
             $.ajax({
                 type: "POST",
-                url: "/users/sessions",
+                url: "${pageContext.request.contextPath }/users/sessions",
                 async: false,
                 dataType: "json",
                 contentType: "application/json;charset=UTF-8",
                 data: jsonData,
                 success: function (result) {
                     if (result.resultCode == 200) {
+                        alert("验证通过，等带跳转，系统回调")
                         event.preventDefault();
                         location.href = "home.do";
                     } else {

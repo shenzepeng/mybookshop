@@ -108,4 +108,9 @@ public class BookServiceImpl implements BookService{
         bookDAO.update(book);
     }
 
+    @Override
+    public List<Book> findAll(Book book) {
+        return bookDAO.findBooks(book);
+    }
+
 }
